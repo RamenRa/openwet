@@ -16,7 +16,10 @@
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+
+git clone https://github.com/xiaorouji/openwrt-passwall.git -b packages package/lean/passwall_package
+git clone https://github.com/xiaorouji/openwrt-passwall.git -b luci package/lean/passwall
+cp -rf package/lean/passwall_package/* package/lean/passwall
+rm -rf ./package/lean/passwall_package
 git clone https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal
 
