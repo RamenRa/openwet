@@ -26,8 +26,14 @@
 
 # git clone https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal
 
-# 修改内核
-# set kernel_name=kernel-xxx
-# echo “” > "$kernel_name"
-# echo "LINUX_VERSION-5.15 = .140" >> "$kernel_name"
-# echo "LINUX_KERNEL_HASH-5.15.140 = be2bee8b346f3ccb35879f16c80a323edda571e36190403805c14a9ea24e4a47" >> "$kernel_name"
+# 修改内核小版本
+# linux_version="5.15" # 不建议随意修改，具体查看源码的内核版本
+# file_path="include/kernel-$linux_version"  # 请替换为实际的文件路径
+# linux_patch=".140"  # 内核小版本
+# kernel_hash_value="be2bee8b346f3ccb35879f16c80a323edda571e36190403805c14a9ea24e4a47"  # 
+# # 清空文件内容
+# > "$file_path"
+# # 写入新内容，使用变量动态生成内容
+# echo "LINUX_VERSION-$linux_version = $linux_patch" >> "$file_path"
+# echo "LINUX_KERNEL_HASH-$linux_version$linux_patch = $kernel_hash_value" >> "$file_path"
+
