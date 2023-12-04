@@ -27,7 +27,7 @@
 # git clone https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal
 
 # 修改内核
-set kernel_name=kernel-xxx
-echo “” > "$kernel_name"
-echo "LINUX_VERSION-5.15 = .140" >> "$kernel_name"
-echo "LINUX_KERNEL_HASH-5.15.140 = be2bee8b346f3ccb35879f16c80a323edda571e36190403805c14a9ea24e4a47" >> "$kernel_name"
+# set kernel_name=kernel-xxx
+# echo “” > "$kernel_name"
+# echo "LINUX_VERSION-5.15 = .140" >> "$kernel_name"
+# echo "LINUX_KERNEL_HASH-5.15.140 = be2bee8b346f3ccb35879f16c80a323edda571e36190403805c14a9ea24e4a47" >> "$kernel_name"
