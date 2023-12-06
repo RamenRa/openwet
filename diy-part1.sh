@@ -10,24 +10,22 @@
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
 
-# Uncomment a feed source
+# 使用sed命令替换的方式换源
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
-#echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-
-#git clone https://github.com/xiaorouji/openwrt-passwall.git -b packages passwall_package
+# 单个包的源码
+# git clone https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal  # 直接拉取到package/WiFiPortal
+#git clone https://github.com/xiaorouji/openwrt-passwall.git -b packages passwall_package  # passwall源码分成了两个仓库
 #git clone https://github.com/xiaorouji/openwrt-passwall.git -b luci  package/passwall
 #cp -rf passwall_package/*  package/passwall
 #rm -rf passwall_package
+# 整个源
 # echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 echo "src-git immluci https://github.com/openwrt/luci.git" >> "feeds.conf.default"
 
 
-# git clone https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal
-
-# 修改内核小版本
+# 修改内核小版本 (已作废以下)
 # linux_version="5.15" # 不建议随意修改，具体查看源码的内核版本
 # file_path="include/kernel-$linux_version"  # 请替换为实际的文件路径
 # linux_patch=".140"  # 内核小版本
