@@ -20,6 +20,7 @@
 #git clone https://github.com/xiaorouji/openwrt-passwall.git -b luci  package/passwall
 #cp -rf passwall_package/*  package/passwall
 #rm -rf passwall_package
+git clone  https://github.com/gdy666/luci-app-lucky.git package/lucky  # luck万吉
 # 整个源
 # echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 echo "src-git immluci https://github.com/openwrt/luci.git" >> "feeds.conf.default"
