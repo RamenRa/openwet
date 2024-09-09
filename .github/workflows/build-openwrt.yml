@@ -25,12 +25,28 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
+    - name: 释放空间 (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+      with:
+        tool-cache: true
+        android: true
+        dotnet: true
+        haskell: true
+        large-packages: true
+        swap-storage: true
+
     - name: Checkout
       uses: actions/checkout@main
 
+      
+    - name: 空间使用情况
+      run: |
+           echo "Free space:"
+           df -h
+           
     - name: 安装编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -45,30 +61,17 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
 
-    - name: 设置缓存以加速构建和节省空间
-      uses: actions/cache@v2
-      with:
-         path: |
-           ~/.ccache
-           openwrt/dl
-         key: ${{ runner.os }}-openwrt-${{ hashFiles('openwrt/.config') }}-${{ github.run_id }}
-         restore-keys: |
-           ${{ runner.os }}-openwrt-${{ hashFiles('openwrt/.config') }}
-           ${{ runner.os }}-openwrt-
-    - name: 释放空间 (Ubuntu)
-      uses: jlumbroso/free-disk-space@main
-      with:
-    # this might remove tools that are actually needed,
-    # if set to "true" but frees about 6 GB
-        tool-cache: true
-    
-    # all of these default to true, but feel free to set to
-    # "false" if necessary for your workflow
-        android: true
-        dotnet: true
-        haskell: true
-        large-packages: true
-        swap-storage: true
+    # - name: 设置缓存以加速构建和节省空间
+    #   uses: actions/cache@v2
+    #   with:
+    #      path: |
+    #        ~/.ccache
+    #        openwrt/dl
+    #      key: ${{ runner.os }}-openwrt-${{ hashFiles('openwrt/.config') }}-${{ github.run_id }}
+    #      restore-keys: |
+    #        ${{ runner.os }}-openwrt-${{ hashFiles('openwrt/.config') }}
+    #        ${{ runner.os }}-openwrt-
+
 
     - name: 拉取源代码
       working-directory: /workdir
