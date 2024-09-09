@@ -48,12 +48,14 @@ jobs:
     - name: 设置缓存以加速构建和节省空间
       uses: actions/cache@v2
       with:
-        path: |
-          ~/.ccache
-          openwrt/dl
-        key: ${{ runner.os }}-openwrt-${{ hashFiles('openwrt/.config') }}
-        restore-keys: |
-          ${{ runner.os }}-openwrt-
+         path: |
+           ~/.ccache
+           openwrt/dl
+         key: ${{ runner.os }}-openwrt-${{ hashFiles('openwrt/.config') }}-${{ github.run_id }}
+         restore-keys: |
+           ${{ runner.os }}-openwrt-${{ hashFiles('openwrt/.config') }}
+           ${{ runner.os }}-openwrt-
+
 
     - name: 拉取源代码
       working-directory: /workdir
