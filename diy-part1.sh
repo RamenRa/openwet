@@ -17,8 +17,8 @@
 # 单个包的源码
 # git clone https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal  # 直接拉取到package/WiFiPortal
 
-git clone https://github.com/xiaorouji/openwrt-passwall-packages.git -b packages passwall_package  # passwall源码分成了两个仓库
-git clone https://github.com/xiaorouji/openwrt-passwall.git -b luci  package/passwall
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git -b main passwall_package  # passwall源码分成了两个仓库
+git clone https://github.com/xiaorouji/openwrt-passwall.git -b main  package/passwall
 cp -rf passwall_package/*  package/passwall
 rm -rf passwall_package
 
