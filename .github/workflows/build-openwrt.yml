@@ -10,7 +10,8 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/openwrt/openwrt.git
+  # REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: raspi_3b_docker.config
