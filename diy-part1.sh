@@ -12,15 +12,24 @@
 
 # 使用sed命令替换的方式换源
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
+./scripts/feeds update -a && rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+rm -rf feeds/packages/utils/v2dat
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+./scripts/feeds install -a
+
 
 # Add a feed source
 # 单个包的源码
 # git clone https://github.com/wiwizcom/WiFiPortal.git package/WiFiPortal  # 直接拉取到package/WiFiPortal
 
-git clone https://github.com/xiaorouji/openwrt-passwall-packages.git -b main passwall_package  # passwall源码分成了两个仓库
-git clone https://github.com/xiaorouji/openwrt-passwall.git -b main  package/passwall
-cp -rf passwall_package/*  package/passwall
-rm -rf passwall_package
+# git clone https://github.com/xiaorouji/openwrt-passwall-packages.git -b main passwall_package  # passwall源码分成了两个仓库
+# git clone https://github.com/xiaorouji/openwrt-passwall.git -b main  package/passwall
+# cp -rf passwall_package/*  package/passwall
+# rm -rf passwall_package
 
 # echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 # echo "src-git passwall src-git https://github.com/xiaorouji/openwrt-passwall.git;main" >> "feeds.conf.default"
